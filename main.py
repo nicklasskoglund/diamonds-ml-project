@@ -52,8 +52,6 @@ def main():
     knn    = train_knn_classifier(X_train, y_train, k=5)
 
     # KNN Regressor tränas på faktiskt pris — inte price_label
-    import pandas as pd
-    df_train = df.iloc[y_train.index] if hasattr(y_train, "index") else df
     y_train_pris = df.loc[y_train.index, "price"]
     y_test_pris  = df.loc[y_test.index,  "price"]
     knn_reg = train_knn_regressor(X_train, y_train_pris, k=5)
