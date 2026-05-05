@@ -94,11 +94,16 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     # Ta bort fysiskt omöjliga mätvärden (diamant kan inte ha mått = 0)
     df = df[(df["x"] > 0) & (df["y"] > 0) & (df["z"] > 0)]
 
+    # Ta bort extrema y/z-värden som är troliga felregistreringar
+    # En normal diamant är max ~20mm i någon dimension
+    df = df[(df["y"] < 20) & (df["z"] < 20)]
+
     # Ta bort saknade värden
     df = df.dropna()
 
     borttagna = ursprunglig_storlek - len(df)
     print(f"✅ Rensning klar: {borttagna} rader borttagna, {len(df)} rader kvar")
+    print(f"   (dubbletter, nollvärden & extrema mätvärden borttagna)")
     return df
 
 
