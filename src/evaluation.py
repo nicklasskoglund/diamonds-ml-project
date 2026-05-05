@@ -43,55 +43,37 @@ def print_classification_report(y_test, y_pred, modellnamn: str = "Modell"):
     ))
 
 
-def plot_confusion_matrix(y_test, y_pred, modellnamn: str = "Modell"):
-    """
-    Plottar en Confusion Matrix som heatmap.
-
-    Parametrar:
-        y_test:     faktiska värden
-        y_pred:     modellens förutsägelser
-        modellnamn: visningsnamn i plottens titel
-    """
+def plot_confusion_matrix(y_test, y_pred, modellnamn: str = "Modell", spara: str = None):
     cm = confusion_matrix(y_test, y_pred)
-
-    plt.figure(figsize=(6, 4))
-    sns.heatmap(
-        cm,
-        annot=True,
-        fmt="d",
-        cmap="Blues",
-        xticklabels=["Billig (0)", "Dyr (1)"],
-        yticklabels=["Billig (0)", "Dyr (1)"],
-    )
-    plt.title(f"Confusion Matrix — {modellnamn}")
-    plt.xlabel("Förutsagd klass")
-    plt.ylabel("Faktisk klass")
+    fig, ax = plt.subplots(figsize=(6, 4))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+                xticklabels=["Billig (0)", "Dyr (1)"],
+                yticklabels=["Billig (0)", "Dyr (1)"], ax=ax)
+    ax.set_title(f"Confusion Matrix — {modellnamn}")
+    ax.set_xlabel("Förutsagd klass")
+    ax.set_ylabel("Faktisk klass")
     plt.tight_layout()
+    if spara:
+        fig.savefig(spara, dpi=150, bbox_inches="tight")
+        print(f"   Plot sparad till: {spara}")
     plt.show()
 
 
-def plot_roc_curve(y_test, y_prob, modellnamn: str = "Modell"):
-    """
-    Plottar ROC-kurvan och skriver ut AUC-värdet.
-
-    Parametrar:
-        y_test:     faktiska värden
-        y_prob:     modellens sannolikheter för klass 1
-        modellnamn: visningsnamn i plottens titel
-    """
+def plot_roc_curve(y_test, y_prob, modellnamn: str = "Modell", spara: str = None):
     auc = roc_auc_score(y_test, y_prob)
     fpr, tpr, _ = roc_curve(y_test, y_prob)
-
-    plt.figure(figsize=(6, 4))
-    plt.plot(fpr, tpr, label=f"AUC = {auc:.3f}", color="steelblue", lw=2)
-    plt.plot([0, 1], [0, 1], "k--", lw=1, label="Slumpmässig gissning")
-    plt.title(f"ROC-kurva — {modellnamn}")
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
-    plt.legend(loc="lower right")
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.plot(fpr, tpr, label=f"AUC = {auc:.3f}", color="steelblue", lw=2)
+    ax.plot([0, 1], [0, 1], "k--", lw=1, label="Slumpmässig gissning")
+    ax.set_title(f"ROC-kurva — {modellnamn}")
+    ax.set_xlabel("False Positive Rate")
+    ax.set_ylabel("True Positive Rate")
+    ax.legend(loc="lower right")
     plt.tight_layout()
+    if spara:
+        fig.savefig(spara, dpi=150, bbox_inches="tight")
+        print(f"   Plot sparad till: {spara}")
     plt.show()
-
     print(f"   AUC-värde: {auc:.3f}")
     return auc
 
