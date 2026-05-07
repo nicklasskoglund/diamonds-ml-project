@@ -28,6 +28,7 @@ from src.evaluation import (
     print_regression_report,
     plot_model_comparison,
 )
+import numpy as np
 
 
 # ── Konfiguration ──────────────────────────────────────────────────────────────
@@ -61,14 +62,14 @@ def main():
 
     # Logistisk Regression
     y_pred_logreg = logreg.predict(X_test)
-    y_prob_logreg = logreg.predict_proba(X_test)[:, 1]
+    y_prob_logreg = np.asarray(logreg.predict_proba(X_test))[:, 1]
     print_classification_report(y_test, y_pred_logreg, "Logistisk Regression")
     plot_confusion_matrix(y_test, y_pred_logreg, "Logistisk Regression")
     auc_logreg = plot_roc_curve(y_test, y_prob_logreg, "Logistisk Regression")
 
     # KNN Classifier
     y_pred_knn = knn.predict(X_test)
-    y_prob_knn = knn.predict_proba(X_test)[:, 1]
+    y_prob_knn = np.asarray(knn.predict_proba(X_test))[:, 1]
     print_classification_report(y_test, y_pred_knn, "KNN k=5")
     plot_confusion_matrix(y_test, y_pred_knn, "KNN k=5")
     auc_knn = plot_roc_curve(y_test, y_prob_knn, "KNN k=5")
