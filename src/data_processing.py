@@ -172,16 +172,18 @@ def split_and_scale(
     undvika dataläckage till testsetet.
 
     Parametrar:
-        df:           dataset med price_label
-        target:       målvariabel (standard = 'price_label')
+        df:           dataset
+        target:       målvariabel (standard = 'price_label' för klassificering,
+                      använd 'price' för regression)
         test_size:    andel testdata (standard = 20%)
         random_state: reproducerbarhet (standard = 42)
 
     Returnerar:
         X_train_scaled, X_test_scaled, y_train, y_test, feature_names, scaler
     """
-    # Välj features — ta bort både pris och label
-    features = [col for col in df.columns if col not in ["price", "price_label"]]
+    # Välj features — ta bort price, price_label och target
+    exclude = {"price", "price_label", target}
+    features = [col for col in df.columns if col not in exclude]
 
     X = df[features]
     y = df[target]
@@ -197,6 +199,7 @@ def split_and_scale(
     X_test_scaled  = scaler.transform(X_test)
 
     print(f"✅ Datasplit: {len(X_train):,} träning / {len(X_test):,} test")
+    print(f"   Target: {target}")
     print(f"   Features: {features}")
     return X_train_scaled, X_test_scaled, y_train, y_test, features, scaler
 
