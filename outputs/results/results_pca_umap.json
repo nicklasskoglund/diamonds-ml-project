@@ -1,0 +1,91 @@
+{
+  "pca": [
+    {
+      "n_components": 2,
+      "var_kumulativ": 0.634,
+      "logreg_acc": 0.9223,
+      "logreg_auc": 0.9823,
+      "knn_acc": 0.9389,
+      "knn_auc": 0.9837
+    },
+    {
+      "n_components": 3,
+      "var_kumulativ": 0.7703,
+      "logreg_acc": 0.9277,
+      "logreg_auc": 0.9838,
+      "knn_acc": 0.9415,
+      "knn_auc": 0.9859
+    },
+    {
+      "n_components": 5,
+      "var_kumulativ": 0.9567,
+      "logreg_acc": 0.9747,
+      "logreg_auc": 0.9973,
+      "knn_acc": 0.9739,
+      "knn_auc": 0.9965
+    }
+  ],
+  "umap": [
+    {
+      "n_components": 2,
+      "logreg_acc": 0.8524,
+      "logreg_auc": 0.9081,
+      "knn_acc": 0.9492,
+      "knn_auc": 0.9886
+    },
+    {
+      "n_components": 5,
+      "logreg_acc": 0.9083,
+      "logreg_auc": 0.9605,
+      "knn_acc": 0.9613,
+      "knn_auc": 0.9934
+    }
+  ],
+  "pca_explained_variance": [
+    {
+      "komponent": 1,
+      "varians": 0.4773,
+      "kumulativ": 0.4773
+    },
+    {
+      "komponent": 2,
+      "varians": 0.1567,
+      "kumulativ": 0.634
+    },
+    {
+      "komponent": 3,
+      "varians": 0.1363,
+      "kumulativ": 0.7703
+    },
+    {
+      "komponent": 4,
+      "varians": 0.1095,
+      "kumulativ": 0.8798
+    },
+    {
+      "komponent": 5,
+      "varians": 0.0769,
+      "kumulativ": 0.9567
+    },
+    {
+      "komponent": 6,
+      "varians": 0.0397,
+      "kumulativ": 0.9963
+    },
+    {
+      "komponent": 7,
+      "varians": 0.0033,
+      "kumulativ": 0.9997
+    },
+    {
+      "komponent": 8,
+      "varians": 0.0002,
+      "kumulativ": 0.9999
+    },
+    {
+      "komponent": 9,
+      "varians": 0.0001,
+      "kumulativ": 1.0
+    }
+  ]
+}

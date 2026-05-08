@@ -1,0 +1,12 @@
+{
+  "logreg_alla_features": {
+    "accuracy": 0.9756,
+    "auc": 0.9974,
+    "n_features": 9
+  },
+  "logreg_reducerad": {
+    "accuracy": 0.9761,
+    "auc": 0.9973,
+    "n_features": 6
+  }
+}

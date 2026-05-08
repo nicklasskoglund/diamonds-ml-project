@@ -1,0 +1,23 @@
+{
+  "knn_reg_baseline": {
+    "rmse": 703.11,
+    "mae": 373.44,
+    "r2": 0.9682,
+    "params": {
+      "n_neighbors": 5,
+      "weights": "uniform",
+      "metric": "euclidean"
+    }
+  },
+  "knn_reg_optimerad": {
+    "rmse": 640.63,
+    "mae": 326.31,
+    "r2": 0.9736,
+    "cv_r2": 0.9733,
+    "params": {
+      "metric": "manhattan",
+      "n_neighbors": 9,
+      "weights": "distance"
+    }
+  }
+}
