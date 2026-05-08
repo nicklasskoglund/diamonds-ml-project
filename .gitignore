@@ -220,5 +220,8 @@ __marimo__/
 # Save localy
 outputs/eda/*
 outputs/models/*
+outputs/results/*
 !outputs/eda/.gitkeep
 !outputs/models/.gitkeep
+!outputs/results/.gitkeep
+!outputs/results/*.json

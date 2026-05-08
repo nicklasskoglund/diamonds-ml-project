@@ -1,0 +1,21 @@
+{
+  "knn_baseline": {
+    "accuracy": 0.9685,
+    "auc": 0.9931,
+    "params": {
+      "n_neighbors": 5,
+      "weights": "uniform",
+      "metric": "euclidean"
+    }
+  },
+  "knn_optimerad": {
+    "accuracy": 0.9739,
+    "auc": 0.9969,
+    "cv_accuracy": 0.9772,
+    "params": {
+      "metric": "manhattan",
+      "n_neighbors": 17,
+      "weights": "distance"
+    }
+  }
+}
